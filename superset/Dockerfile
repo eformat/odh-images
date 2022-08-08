@@ -1,7 +1,7 @@
-FROM registry.access.redhat.com/ubi8/python-38:1-86
+FROM registry.access.redhat.com/ubi8/python-38:1-96
 
 # Superset version
-ARG SUPERSET_VERSION=1.4.1
+ARG SUPERSET_VERSION=2.0.0
 
 # Configure environment
 ENV GUNICORN_BIND=0.0.0.0:8088 \
@@ -38,12 +38,13 @@ RUN mkdir /etc/superset  && \
                 openldap-devel && \
     yum clean all && \
     rm -rf /var/yum/cache/* && \
-    pip install sqlalchemy-trino \
+    pip install sqlalchemy-trino>=0.5.0 \
                 pyhive \
-                markupsafe==2.0.1 \
+                markupsafe>=2.0.1 \
                 psycopg2 \
-                authlib==0.15.1 \
+                authlib>=0.15.1 \
                 python-ldap \
+                trio_websocket>=0.9.2 \
                 apache-superset==${SUPERSET_VERSION}
 
 VOLUME /etc/superset \

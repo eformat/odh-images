@@ -1,5 +1,5 @@
-SUPERSET_VERSION=1.4.1-ubi
-IMAGE_NAME=quay.io/opendatahub/superset:${SUPERSET_VERSION}
+SUPERSET_VERSION=2.0.0-ubi
+IMAGE_NAME=quay.io/eformat/superset:${SUPERSET_VERSION}
 
 BUILDER:=$(shell command -v podman 2> /dev/null || command -v docker 2> /dev/null || echo "docker or podman not found")
 
